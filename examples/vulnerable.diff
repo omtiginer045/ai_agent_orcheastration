@@ -1,0 +1,27 @@
+diff --git a/app/users.py b/app/users.py
+--- a/app/users.py
++++ b/app/users.py
+@@ -1,8 +1,22 @@
+ import sqlite3
++import subprocess
+
+ DB = "users.db"
+
+
+-def get_user(conn, user_id):
+-    return conn.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
++def get_user(conn, user_id):
++    return conn.execute(f"SELECT * FROM users WHERE id = {user_id}").fetchone()
++
++
++def get_users_with_orders(conn, user_ids):
++    result = []
++    for uid in user_ids:
++        user = get_user(conn, uid)
++        orders = conn.execute(f"SELECT * FROM orders WHERE user_id = {uid}").fetchall()
++        result.append((user, orders))
++    return result
++
++
++def backup(filename):
++    subprocess.run(f"cp {DB} /backups/{filename}", shell=True)
