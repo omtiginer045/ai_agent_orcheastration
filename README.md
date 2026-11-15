@@ -21,7 +21,7 @@ diff ──► Orchestrator (asyncio)
 ## Yol haritası
 
 - [x] **Aşama 1:** Proje iskeleti, veri modelleri (`Finding`, `ReviewResult`, `FinalReport`), diff kaynağı
-- [ ] **Aşama 2:** Uzman agent'lar (Claude Agent SDK)
+- [x] **Aşama 2:** Uzman agent'lar (Claude Agent SDK)
 - [ ] **Aşama 3:** Paralel orkestratör (timeout, hata izolasyonu, maliyet takibi)
 - [ ] **Aşama 4:** Judge agent ve raporlama
 - [ ] **Aşama 5:** CLI ve uçtan uca testler
