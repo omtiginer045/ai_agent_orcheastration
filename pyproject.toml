@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pr-reviewer"
+version = "0.1.0"
+description = "Multi-agent PR review pipeline orchestrated with asyncio and the Claude Agent SDK"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "claude-agent-sdk>=0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+pr-review = "pr_reviewer.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pr_reviewer*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
